@@ -11,6 +11,8 @@ const cors = require('../middlewares/cors');
 
 const { JoiBodyEmailPassword, JoiBodyEmailPasswordNameAboutAvatar } = require('../config/validationConstants');
 
+router.use(requestLogger); // подключаем логгер запросов
+
 router.get('/crash-test', () => {
   setTimeout(() => {
     throw new Error('Сервер сейчас упадёт');
@@ -21,8 +23,6 @@ router.post('/signin', celebrate(JoiBodyEmailPassword), login);
 router.post('/signup', celebrate(JoiBodyEmailPasswordNameAboutAvatar), createUser);
 
 router.use(auth);
-
-router.use(requestLogger); // подключаем логгер запросов
 
 router.use(cors); // подключаем CORS
 
