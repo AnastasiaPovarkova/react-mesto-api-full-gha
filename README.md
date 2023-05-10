@@ -10,6 +10,6 @@
 
 IP 158.160.98.150
 
-Frontend https://...
+Frontend https://mestofront.anstpov.nomoredomains.monster
 
-Backend https://...
+Backend https://api.mesto.anstpov.nomoredomains.monster
