@@ -1,0 +1,11 @@
+.header__info {
+    display: flex;
+    flex-direction: row;
+    padding-top: 7px;
+}
+
+@media screen and (max-width: 600px) {
+    .header__info{
+      margin-right: 27px;
+    }
+  }

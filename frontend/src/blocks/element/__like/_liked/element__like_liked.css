@@ -1,0 +1,4 @@
+.element__like_liked {
+  opacity: 1;
+  background-image: url(../../../../images/Element__like_active.svg);
+}

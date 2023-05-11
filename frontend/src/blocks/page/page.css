@@ -1,0 +1,36 @@
+.page {
+  background-color: #000;
+  color: #fff;
+  min-width: 320px;
+  max-width: 1280px;
+  margin: 0 auto 0;
+  padding: 45px 200px 60px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  text-rendering: optimizeLegibility;
+}
+
+@media screen and (max-width: 1280px) {
+  .page{
+    padding: 45px 15.625% 60px;
+  }
+}
+
+@media screen and (max-width: 960px) {
+  .page{
+    padding: 45px 70px 60px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .page{
+    padding: 28px 0 36px;
+  }
+}

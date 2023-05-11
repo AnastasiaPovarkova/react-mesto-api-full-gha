@@ -1,0 +1,8 @@
+.profile__edit {
+  position: absolute;
+  cursor: pointer;
+  z-index: 1;
+  opacity: 0;
+  display: block;
+  transition: opacity 0.3s;
+}

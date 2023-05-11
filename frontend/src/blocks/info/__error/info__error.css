@@ -1,0 +1,17 @@
+.info__error {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 900;
+  font-size: 18px;
+  line-height: 22px;
+  text-align: center;
+  color: #000000;
+  margin: 0 auto 10px; 
+}
+
+@media screen and (max-width: 600px) {
+  .info__error{
+      font-size: 16px;
+      line-height: 18px;
+  }
+}

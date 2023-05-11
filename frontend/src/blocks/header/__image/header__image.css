@@ -1,0 +1,16 @@
+.header__image {
+  width: 142px;
+  height: 33px;
+  display: flex;
+  justify-content: flex-start;
+  margin-bottom: 40px;
+}
+
+@media screen and (max-width: 600px) {
+  .header__image{
+    width: 103.74px;
+    height: 24.4px;
+    margin-bottom: 31.6px;
+    margin-left: 27px;
+  }
+}

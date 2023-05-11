@@ -1,0 +1,19 @@
+.login__field {
+    margin: 0;
+    padding: 13px 0 8px;
+    border: 0;
+    border-bottom: 2px solid #CCCCCC;
+    background-color: #000;
+    color: #CCCCCC;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+}
+
+  @media screen and (max-width: 600px) {
+    .login__field{
+      width: 260px;
+    }
+}

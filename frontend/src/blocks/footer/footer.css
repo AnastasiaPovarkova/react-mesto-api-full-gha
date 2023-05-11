@@ -1,0 +1,13 @@
+.footer {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  font-family: 'Inter', Arial, sans-serif;
+}
+
+@media screen and (max-width: 600px) {
+  .footer{
+    padding: 0 19px 0;
+    box-sizing: border-box;
+  }
+}

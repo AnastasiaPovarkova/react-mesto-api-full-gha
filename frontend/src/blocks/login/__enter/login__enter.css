@@ -1,0 +1,27 @@
+.login__enter {
+  width: 358px;
+  height: 17px;
+  margin-top: 15px;
+
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+  text-align: center;
+  background-color: black;
+  color: #FFFFFF;
+  border: 0;
+  cursor: pointer;
+}
+
+.login__enter:hover {
+    opacity: 0.6;
+}
+  
+@media screen and (max-width: 600px) {
+  .login__enter{
+    width: 260px;
+    margin-top: 20px;
+  }
+}

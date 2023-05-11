@@ -1,0 +1,10 @@
+.element {
+  background-color: #fff;
+  color: #000;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  font-family: 'Inter', Arial, sans-serif;
+  position: relative;
+}

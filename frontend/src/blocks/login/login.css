@@ -1,0 +1,15 @@
+.login {
+    width: 360px;
+    margin-top: 60px;
+    margin-bottom: 112px;
+    box-sizing: border-box;
+    /* position: relative; */
+}
+  
+@media screen and (max-width: 600px) {
+    .login{
+      width: 262px;
+      margin-top: 40px;
+      margin-bottom: 77px;
+    }
+}

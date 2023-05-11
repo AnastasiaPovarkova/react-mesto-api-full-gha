@@ -1,0 +1,22 @@
+.info__text {
+  width: 358px;
+  height: 58px;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 900;
+  font-size: 24px;
+  line-height: 29px;
+  text-align: center;
+  color: #000000;
+  margin: 0 auto 60px;
+}
+
+@media screen and (max-width: 600px) {
+    .info__text{
+        width: 244px;
+        height: 48px;
+        font-size: 20px;
+        line-height: 24px;
+        margin: 0 auto 50px;
+    }
+}
