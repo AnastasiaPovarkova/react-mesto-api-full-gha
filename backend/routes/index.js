@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const { celebrate } = require('celebrate');
 const { errors } = require('celebrate');
+const cors = require('cors');
 const { requestLogger, errorLogger } = require('../middlewares/logger');
 
 const { login, createUser } = require('../controllers/users');
@@ -9,7 +10,7 @@ const centralizedErrorHandler = require('../middlewares/centralizedErrorHandler'
 const NotFoundError = require('../errors/not-found-err');
 // const cors = require('../middlewares/cors');
 const allowedCors = require('../middlewares/cors');
-const cors = require('cors');
+
 
 const { JoiBodyEmailPassword, JoiBodyEmailPasswordNameAboutAvatar } = require('../config/validationConstants');
 
