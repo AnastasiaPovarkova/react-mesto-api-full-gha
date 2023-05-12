@@ -7,7 +7,9 @@ const { login, createUser } = require('../controllers/users');
 const auth = require('../middlewares/auth');
 const centralizedErrorHandler = require('../middlewares/centralizedErrorHandler');
 const NotFoundError = require('../errors/not-found-err');
-const cors = require('../middlewares/cors');
+// const cors = require('../middlewares/cors');
+const allowedCors = require('../middlewares/cors');
+const cors = require('cors');
 
 const { JoiBodyEmailPassword, JoiBodyEmailPasswordNameAboutAvatar } = require('../config/validationConstants');
 
@@ -19,12 +21,15 @@ router.get('/crash-test', () => {
   }, 0);
 });
 
+router.use(cors({
+  origin: allowedCors,
+  credentials: true,
+})); // подключаем CORS
+
 router.post('/signin', celebrate(JoiBodyEmailPassword), login);
 router.post('/signup', celebrate(JoiBodyEmailPasswordNameAboutAvatar), createUser);
 
 router.use(auth);
-
-router.use(cors); // подключаем CORS
 
 router.use('/users', require('./users'));
 router.use('/cards', require('./cards'));
