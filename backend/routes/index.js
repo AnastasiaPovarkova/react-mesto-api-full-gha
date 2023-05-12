@@ -9,7 +9,14 @@ const auth = require('../middlewares/auth');
 const centralizedErrorHandler = require('../middlewares/centralizedErrorHandler');
 const NotFoundError = require('../errors/not-found-err');
 // const cors = require('../middlewares/cors');
-const allowedCors = require('../middlewares/cors');
+const allowedCors = [
+  'https://praktikum.tk',
+  'http://praktikum.tk',
+  'http://localhost:3000',
+  'http://127.0.0.1:3000',
+  'http://mestofront.anstpov.nomoredomains.monster',
+  'https://mestofront.anstpov.nomoredomains.monster',
+];
 
 const { JoiBodyEmailPassword, JoiBodyEmailPasswordNameAboutAvatar } = require('../config/validationConstants');
 
