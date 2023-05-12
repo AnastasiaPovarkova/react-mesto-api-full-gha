@@ -11,7 +11,6 @@ const NotFoundError = require('../errors/not-found-err');
 // const cors = require('../middlewares/cors');
 const allowedCors = require('../middlewares/cors');
 
-
 const { JoiBodyEmailPassword, JoiBodyEmailPasswordNameAboutAvatar } = require('../config/validationConstants');
 
 router.use(requestLogger); // подключаем логгер запросов
