@@ -20,8 +20,8 @@ class Auth {
       headers: {
         "Content-Type": "application/json",
       },
-      credentials: 'include',
-      body: JSON.stringify({ password, email }),
+      credentials: "include",
+      body: JSON.stringify({ email, password }),
     });
   };
 
@@ -31,7 +31,7 @@ class Auth {
       headers: {
         "Content-Type": "application/json",
       },
-      credentials: 'include',
+      credentials: "include",
       body: JSON.stringify({ password, email }),
     }).then((res) => {
       if (res.token) {
@@ -48,13 +48,13 @@ class Auth {
         "Content-Type": "application/json",
         Authorization: `Bearer ${token}`,
       },
-      credentials: 'include',
+      credentials: "include",
     });
   };
 }
 
 const auth = new Auth({
-  BASE_URL: "https://api.mesto.anstpov.nomoredomains.monster", // "https://auth.nomoreparties.co"
+  BASE_URL: "https://api.mesto.anstpov.nomoredomains.monster", // "https://api.mesto.anstpov.nomoredomains.monster", // "https://auth.nomoreparties.co"
 });
 
 export default auth;
