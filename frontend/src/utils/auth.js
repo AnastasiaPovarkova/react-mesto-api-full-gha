@@ -15,9 +15,6 @@ class Auth {
   }
 
   register = (email, password) => {
-    console.log('in auth email, password:', email, password);
-    console.log('in auth url:', this._baseUrl);
-    console.log('JSON: ', JSON.stringify({ email, password }));
     return this._request(`${this._baseUrl}/signup`, {
       method: "POST",
       headers: {

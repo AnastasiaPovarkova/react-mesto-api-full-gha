@@ -3,8 +3,6 @@ import { UserContext } from "../contexts/CurrentUserContext";
 
 function Card({ card, onCardClick, onDeleteClick, onCardLike }) {
   const currentUser = React.useContext(UserContext);
-  console.log('card.owner._id: ', card.owner._id);
-  console.log('currentUser._id: ', currentUser._id);
 
   const isOwn = (card?.owner._id === currentUser._id) || (card?.owner === currentUser._id); //наша карточка или нет
   const isLiked = card?.likes.some((i) => i._id === currentUser._id); //поставлен ли лайк

@@ -49,8 +49,6 @@ function App() {
   useEffect(() => {
     Promise.all([api.getUserInfo(), api.getInitialCards()])
       .then(([data, cards]) => {
-        console.log('data: ', data);
-        console.log('cards: ', cards);
         setCurrentUser(data.user);
         setCards(cards.reverse());
       })
@@ -112,7 +110,6 @@ function App() {
       })
       .catch((err) => {
         handleNotification(false);
-        console.log(err);
         handleErrorMessageNotification(err);
       })
       .finally(() => setIsAuthLoading(false));
@@ -123,7 +120,6 @@ function App() {
     auth
       .authorize(formValue.password, formValue.email)
       .then((data) => {
-        console.log(data);
         if (data) {
           setUserEmail(data.email);
           setLoggedIn(true);
@@ -132,7 +128,6 @@ function App() {
       })
       .catch((err) => {
         handleNotification(false);
-        console.log(err);
         handleErrorMessageNotification(err);
       })
       .finally(() => setIsAuthLoading(false));
@@ -215,7 +210,6 @@ function App() {
     api
       .addNewCard(card)
       .then((data) => {
-        console.log('data in AddCard: ', data);
         setCards([data, ...cards]);
         closeAllPopups();
       })
