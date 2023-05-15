@@ -48,10 +48,11 @@ module.exports.deleteCardById = (req, res, next) => {
     .catch(next);
 };
 
-module.exports.likeCard = (req, res, next) => {
+function updateUCardLikesDecorator(data, req, res, next) {
+  console.log('data in likes card: ', data);
   Card.findByIdAndUpdate(
     req.params.cardId,
-    { $addToSet: { likes: req.user._id } }, // добавить _id в массив, если его там нет
+    data, // добавить или удалить _id из массива
     { new: true },
   )
     .populate(['owner', 'likes'])
@@ -68,26 +69,50 @@ module.exports.likeCard = (req, res, next) => {
         next(err);
       }
     });
+}
+
+module.exports.likeCard = (req, res, next) => {
+  updateUCardLikesDecorator({ $addToSet: { likes: req.user._id } }, req, res, next);
+  // Card.findByIdAndUpdate(
+  //   req.params.cardId,
+  //   { $addToSet: { likes: req.user._id } }, // добавить _id в массив, если его там нет
+  //   { new: true },
+  // )
+  //   .populate(['owner', 'likes'])
+  //   .then((card) => {
+  //     if (!card) {
+  //       throw new NotFoundError('Карточка не найдена');
+  //     }
+  //     res.status(200).send(card);
+  //   })
+  //   .catch((err) => {
+  //     if (err instanceof mongoose.Error.CastError) {
+  //       next(new BadRequestError('Некорректно задан ID карточки'));
+  //     } else {
+  //       next(err);
+  //     }
+  //   });
 };
 
 module.exports.dislikeCard = (req, res, next) => {
-  Card.findByIdAndUpdate(
-    req.params.cardId,
-    { $pull: { likes: req.user._id } }, // убрать _id из массива
-    { new: true },
-  )
-    .populate(['owner', 'likes'])
-    .then((card) => {
-      if (!card) {
-        throw new NotFoundError('Карточка не найдена');
-      }
-      res.status(200).send(card);
-    })
-    .catch((err) => {
-      if (err instanceof mongoose.Error.CastError) {
-        next(new BadRequestError('Некорректно задан ID карточки'));
-      } else {
-        next(err);
-      }
-    });
+  updateUCardLikesDecorator({ $pull: { likes: req.user._id } }, req, res, next);
+  // Card.findByIdAndUpdate(
+  //   req.params.cardId,
+  //   { $pull: { likes: req.user._id } }, // убрать _id из массива
+  //   { new: true },
+  // )
+  //   .populate(['owner', 'likes'])
+  //   .then((card) => {
+  //     if (!card) {
+  //       throw new NotFoundError('Карточка не найдена');
+  //     }
+  //     res.status(200).send(card);
+  //   })
+  //   .catch((err) => {
+  //     if (err instanceof mongoose.Error.CastError) {
+  //       next(new BadRequestError('Некорректно задан ID карточки'));
+  //     } else {
+  //       next(err);
+  //     }
+  //   });
 };

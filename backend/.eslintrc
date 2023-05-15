@@ -1,7 +1,5 @@
 {
   "env": {
-    "browser": false,
-    "commonjs": false,
     "es2021": true
   },
   "extends": [
