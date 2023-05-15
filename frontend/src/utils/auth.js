@@ -15,9 +15,13 @@ class Auth {
   }
 
   register = (email, password) => {
+    console.log('in auth email, password:', email, password);
+    console.log('in auth url:', this._baseUrl);
+    console.log('JSON: ', JSON.stringify({ email, password }));
     return this._request(`${this._baseUrl}/signup`, {
       method: "POST",
       headers: {
+        "Accept": "application/json",
         "Content-Type": "application/json",
       },
       credentials: "include",
@@ -29,14 +33,15 @@ class Auth {
     return this._request(`${this._baseUrl}/signin`, {
       method: "POST",
       headers: {
+        "Accept": "application/json",
         "Content-Type": "application/json",
       },
       credentials: "include",
       body: JSON.stringify({ password, email }),
     }).then((res) => {
-      if (res.token) {
-        localStorage.setItem("jwt", res.token);
-      }
+      // if (res.token) {
+      //   localStorage.setItem("jwt", res.token);
+      // }
       return res;
     });
   };
@@ -45,8 +50,9 @@ class Auth {
     return this._request(`${this._baseUrl}/users/me`, {
       method: "GET",
       headers: {
+        "Accept": "application/json",
         "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
+        // Authorization: `Bearer ${token}`,
       },
       credentials: "include",
     });
@@ -54,7 +60,7 @@ class Auth {
 }
 
 const auth = new Auth({
-  BASE_URL: "https://api.mesto.anstpov.nomoredomains.monster", // "https://api.mesto.anstpov.nomoredomains.monster", // "https://auth.nomoreparties.co"
+  BASE_URL: "https://api.mesto.anstpov.nomoredomains.monster", // "https://auth.nomoreparties.co"
 });
 
 export default auth;

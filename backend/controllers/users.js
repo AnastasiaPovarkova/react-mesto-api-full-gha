@@ -21,7 +21,7 @@ function findByIdDecorator(id, res, next) {
       if (!user) {
         throw new NotFoundError('Нет пользователя с таким id');
       }
-      res.status(200).send({ data: user });
+      res.status(200).send({ user });
     })
     .catch(next);
 }
@@ -38,10 +38,10 @@ module.exports.getUserById = (req, res, next) => {
 
 module.exports.login = (req, res, next) => {
   const { email, password } = req.body;
-  console.log(email, password);
 
   return User.findUserByCredentials(email, password)
     .then((user) => {
+      console.log('Conrollers Users user: ', user);
       const token = jwt.sign(
         { _id: user._id },
         NODE_ENV === 'production' ? JWT_SECRET : 'super-strong-secret',
@@ -99,7 +99,7 @@ function updateUserInfoDecorator(data, req, res, next) {
       if (!user) {
         throw new NotFoundError('Пользователь по указанному id не найден');
       }
-      res.send({ data: user });
+      res.send({ user });
     })
     .catch((err) => {
       if (err instanceof mongoose.Error.ValidationError) {

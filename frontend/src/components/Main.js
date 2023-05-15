@@ -51,7 +51,7 @@ function Main({
         ></button>
       </section>
 
-      <section className="elements">
+      {/* <section className="elements">
         {cards?.map((card) => {
           return (
             <Card
@@ -63,7 +63,7 @@ function Main({
             />
           );
         })}
-      </section>
+      </section> */}
     </main>
   );
 }

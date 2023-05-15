@@ -49,6 +49,8 @@ function App() {
   useEffect(() => {
     Promise.all([api.getUserInfo(), api.getInitialCards()])
       .then(([data, cards]) => {
+        console.log('data: ', data);
+        console.log('cards: ', cards);
         setCurrentUser(data);
         setCards(cards);
       })
@@ -87,9 +89,10 @@ function App() {
 
   const handleTokenCheck = () => {
     //Проверка наличия токена в localStorage
-    if (localStorage.getItem("jwt")) {
+    //if (localStorage.getItem("jwt")) {
       auth
-        .checkToken(localStorage.getItem("jwt"))
+        //.checkToken(localStorage.getItem("jwt"))
+        .checkToken()
         .then((res) => {
           console.log(res);
           if (res) {
@@ -99,7 +102,7 @@ function App() {
           }
         })
         .catch((err) => console.log(err));
-    }
+    //}
   };
 
   function handleRegister(formValue) {
@@ -122,19 +125,25 @@ function App() {
 
   function handleLogin(formValue) {
     setIsAuthLoading(true);
-    Promise.all([
-      auth.checkToken(localStorage.getItem("jwt")),
-      auth.authorize(formValue.password, formValue.email)
-    ])
-      .then(([data, res]) => {
+    // Promise.all([
+    //   auth.checkToken(localStorage.getItem("jwt")),
+    //   auth.authorize(formValue.password, formValue.email)
+    // ])
+    auth
+      .authorize(formValue.password, formValue.email)
+      //.then(([data, res]) => {
+      .then((data) => {
+        console.log(data);
         if (data) {
-          setUserEmail(data.data.email);
-        }
-        if (res.token) {
-          console.log(res);
+          setUserEmail(data.email);
           setLoggedIn(true);
           navigate("/", { replace: true });
         }
+        // if (res.token) {
+        //   console.log(res);
+        //   setLoggedIn(true);
+        //   navigate("/", { replace: true });
+        // }
       })
       .catch((err) => {
         handleNotification(false);
@@ -185,7 +194,7 @@ function App() {
     api
       .deleteCard(card._id)
       .then(() => {
-        setCards((state) => state.filter((c) => c._id !== card._id));
+        setCards((state) => state.filter((c) => c._id != card._id));
         closeAllPopups();
       })
       .catch((err) => console.log(err))

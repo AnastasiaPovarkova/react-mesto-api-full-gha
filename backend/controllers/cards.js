@@ -7,7 +7,7 @@ const ForbiddenError = require('../errors/forbidden-err');
 module.exports.getCards = (req, res, next) => {
   Card.find({})
     .populate(['owner', 'likes'])
-    .then((cards) => res.send({ data: cards }))
+    .then((cards) => res.send({ cards }))
     .catch(next);
 };
 
@@ -18,7 +18,7 @@ module.exports.createCard = (req, res, next) => {
   Card.create({
     name, link, owner: userId,
   })
-    .then((card) => res.status(201).send({ data: card }))
+    .then((card) => res.status(201).send({ card }))
     .catch((err) => {
       if (err instanceof mongoose.Error.ValidationError) {
         const message = Object.values(err.errors).map((error) => error.message).join('; ');
@@ -40,7 +40,7 @@ module.exports.deleteCardById = (req, res, next) => {
       } else {
         card.deleteOne()
           .then((myCard) => {
-            res.status(200).send({ data: myCard });
+            res.status(200).send({ myCard });
           })
           .catch(next);
       }
@@ -58,7 +58,7 @@ module.exports.likeCard = (req, res, next) => {
       if (!card) {
         throw new NotFoundError('Карточка не найдена');
       }
-      res.status(200).send({ data: card });
+      res.status(200).send({ card });
     })
     .catch((err) => {
       if (err instanceof mongoose.Error.CastError) {
@@ -79,7 +79,7 @@ module.exports.dislikeCard = (req, res, next) => {
       if (!card) {
         throw new NotFoundError('Карточка не найдена');
       }
-      res.status(200).send({ data: card });
+      res.status(200).send({ card });
     })
     .catch((err) => {
       if (err instanceof mongoose.Error.CastError) {
