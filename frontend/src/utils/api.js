@@ -96,6 +96,7 @@ const api = new Api({
   headers: {
     // authorization: "d2287a93-13da-4c7a-9dc9-db17e7519537",
     "Content-Type": "application/json",
+    "Accept": "application/json",
   },
 });
 

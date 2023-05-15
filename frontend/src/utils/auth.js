@@ -39,9 +39,6 @@ class Auth {
       credentials: "include",
       body: JSON.stringify({ password, email }),
     }).then((res) => {
-      // if (res.token) {
-      //   localStorage.setItem("jwt", res.token);
-      // }
       return res;
     });
   };
@@ -52,7 +49,6 @@ class Auth {
       headers: {
         "Accept": "application/json",
         "Content-Type": "application/json",
-        // Authorization: `Bearer ${token}`,
       },
       credentials: "include",
     });

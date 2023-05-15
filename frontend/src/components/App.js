@@ -51,8 +51,8 @@ function App() {
       .then(([data, cards]) => {
         console.log('data: ', data);
         console.log('cards: ', cards);
-        setCurrentUser(data);
-        setCards(cards);
+        setCurrentUser(data.user);
+        setCards(cards.reverse());
       })
       .catch((err) => console.log(err));
   }, []);
@@ -88,21 +88,17 @@ function App() {
   }, []);
 
   const handleTokenCheck = () => {
-    //Проверка наличия токена в localStorage
-    //if (localStorage.getItem("jwt")) {
       auth
-        //.checkToken(localStorage.getItem("jwt"))
         .checkToken()
         .then((res) => {
-          console.log(res);
+          console.log('res in checkToken: ',res);
           if (res) {
             setLoggedIn(true);
-            setUserEmail(res.data.email);
+            setUserEmail(res.user.email);
             navigate("/", { replace: true });
           }
         })
         .catch((err) => console.log(err));
-    //}
   };
 
   function handleRegister(formValue) {
@@ -125,13 +121,8 @@ function App() {
 
   function handleLogin(formValue) {
     setIsAuthLoading(true);
-    // Promise.all([
-    //   auth.checkToken(localStorage.getItem("jwt")),
-    //   auth.authorize(formValue.password, formValue.email)
-    // ])
     auth
       .authorize(formValue.password, formValue.email)
-      //.then(([data, res]) => {
       .then((data) => {
         console.log(data);
         if (data) {
@@ -139,11 +130,6 @@ function App() {
           setLoggedIn(true);
           navigate("/", { replace: true });
         }
-        // if (res.token) {
-        //   console.log(res);
-        //   setLoggedIn(true);
-        //   navigate("/", { replace: true });
-        // }
       })
       .catch((err) => {
         handleNotification(false);
@@ -206,7 +192,7 @@ function App() {
     api
       .changeUserInfo(data)
       .then((data) => {
-        setCurrentUser(data);
+        setCurrentUser(data.user);
         closeAllPopups();
       })
       .catch((err) => console.log(err))
@@ -218,7 +204,7 @@ function App() {
     api
       .editAvatar(avatar)
       .then((data) => {
-        setCurrentUser(data);
+        setCurrentUser(data.user);
         closeAllPopups();
       })
       .catch((err) => console.log(err))
@@ -230,7 +216,7 @@ function App() {
     api
       .addNewCard(card)
       .then((data) => {
-        console.log(data);
+        console.log('data in AddCard: ', data);
         setCards([data, ...cards]);
         closeAllPopups();
       })
