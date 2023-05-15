@@ -91,7 +91,6 @@ function App() {
       auth
         .checkToken()
         .then((res) => {
-          console.log('res in checkToken: ',res);
           if (res) {
             setLoggedIn(true);
             setUserEmail(res.user.email);

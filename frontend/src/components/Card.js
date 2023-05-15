@@ -6,8 +6,8 @@ function Card({ card, onCardClick, onDeleteClick, onCardLike }) {
   console.log('card.owner._id: ', card.owner._id);
   console.log('currentUser._id: ', currentUser._id);
 
-  const isOwn = card.owner._id === currentUser._id; //наша карточка или нет
-  const isLiked = card.likes.some((i) => i._id === currentUser._id); //поставлен ли лайк
+  const isOwn = (card?.owner._id === currentUser._id) || (card?.owner === currentUser._id); //наша карточка или нет
+  const isLiked = card?.likes.some((i) => i._id === currentUser._id); //поставлен ли лайк
 
   const cardLikeButtonClassName = `element__like ${ //`className` для кнопки лайка
     isLiked && "element__like_liked"
