@@ -72,8 +72,7 @@ function App() {
         closeAllPopups();
       }
     }
-    if (isOpen) {
-      // навешиваем только при открытии
+    if (isOpen) { // навешиваем только при открытии
       document.addEventListener("keydown", closeByEscape);
       return () => {
         document.removeEventListener("keydown", closeByEscape);
@@ -110,7 +109,11 @@ function App() {
       })
       .catch((err) => {
         handleNotification(false);
-        handleErrorMessageNotification(err);
+        if (err.statusCode === 400) {
+          setErrorMessage(err.validation.body.message);
+        } else {
+          setErrorMessage(err.message);
+        }
       })
       .finally(() => setIsAuthLoading(false));
   }
@@ -128,7 +131,11 @@ function App() {
       })
       .catch((err) => {
         handleNotification(false);
-        handleErrorMessageNotification(err);
+        if (err.statusCode === 400) {
+          setErrorMessage(err.validation.body.message);
+        } else {
+          setErrorMessage(err.message);
+        }
       })
       .finally(() => setIsAuthLoading(false));
   }
@@ -140,10 +147,6 @@ function App() {
   function handleNotification(successed) {
     setIsSuccessPopupOpen(true);
     setIsSuccess(successed);
-  }
-
-  function handleErrorMessageNotification(err) {
-    setErrorMessage(err);
   }
 
   function handleCardLike(card) {

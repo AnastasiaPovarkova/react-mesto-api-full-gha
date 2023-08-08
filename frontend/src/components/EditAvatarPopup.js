@@ -3,7 +3,7 @@ import PopupWithForm from "./PopupWithForm";
 import useForm from "../hooks/useForm";
 
 function EditAvatarPopup({ isOpen, onClose, onUpdateAvatar, isLoading }) {
-  const {formValue, error, handleChange, resetValidation} = useForm();
+  const {formValue, error, handleChange, resetValidation, isValid} = useForm();
 
   useEffect(() => {
     resetValidation()
@@ -26,6 +26,7 @@ function EditAvatarPopup({ isOpen, onClose, onUpdateAvatar, isLoading }) {
       isOpen={isOpen}
       onSubmit={handleSubmit}
       isLoading={isLoading}
+      isValid={isValid}
     >
       <input
         type="url"

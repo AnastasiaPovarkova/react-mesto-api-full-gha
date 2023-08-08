@@ -5,7 +5,7 @@ class Auth {
 
   _getResponseData(res) {
     if (!res.ok) {
-      return Promise.reject(`Ошибка: ${res.status}`);
+      return res.json().then(res => Promise.reject(res));
     }
     return res.json();
   }
@@ -53,7 +53,7 @@ class Auth {
 }
 
 const auth = new Auth({
-  BASE_URL: "https://api.mesto.anstpov.nomoredomains.monster", // "https://auth.nomoreparties.co"
+  BASE_URL: "https://api.mesto.anstpov.nomoredomains.monster",
 });
 
 export default auth;

@@ -1,14 +1,3 @@
-import React from "react";
-import Popup from "./Popup"
-
-// function PopupWithForm({isOpen, name, onClose, ...props}) {
-//   return (
-//     <Popup isOpen={isOpen} name={name} onClose={onClose}>
-//         <h2 className='popup__title'>{props.title}</h2>
-//     </Popup>
-//   )
-// }
-
 function PopupWithForm({
   name,
   title,
@@ -18,7 +7,8 @@ function PopupWithForm({
   classs,
   submitText,
   onSubmit,
-  isLoading
+  isLoading,
+  isValid
 }) {
 
   return (
@@ -51,6 +41,7 @@ function PopupWithForm({
             type="submit"
             className={"popup__submit"}
             name="submit"
+            disabled={!isValid}
             defaultValue={submitText || "Сохранить"}
           >
             {isLoading ? "Сохранение..." : submitText || "Сохранить"}

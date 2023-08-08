@@ -54,7 +54,6 @@ body {
 @import url(./blocks/popup/__field/_error_active/popup__field_error_active.css);
 @import url(./blocks/popup/__submit/popup__submit.css);
 @import url(./blocks/popup/__submit-delete/popup__submit-delete.css);
-@import url(./blocks/popup/__submit/_inactive/popup__submit_inactive.css);
 @import url(./blocks/popup/_is-opened/popup_is-opened.css);
 @import url(./blocks/popup/__element/popup__element.css);
 @import url(./blocks/popup/__image/popup__image.css);

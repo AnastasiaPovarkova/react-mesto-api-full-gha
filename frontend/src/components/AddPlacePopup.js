@@ -3,7 +3,7 @@ import PopupWithForm from "./PopupWithForm";
 import useForm from "../hooks/useForm";
 
 function AddPlacePopup({ isOpen, onClose, onAddCard, isLoading }) {
-  const {formValue, error, handleChange, resetValidation} = useForm();
+  const {formValue, error, handleChange, resetValidation, isValid} = useForm();
 
   useEffect(() => {
     resetValidation()
@@ -29,6 +29,7 @@ function AddPlacePopup({ isOpen, onClose, onAddCard, isLoading }) {
       isOpen={isOpen}
       onSubmit={handleSubmit}
       isLoading={isLoading}
+      isValid={isValid}
     >
       <input
         type="text"

@@ -7,3 +7,7 @@
   color: #A9A9A9;
   text-decoration: none;
 }
+
+.header__link:hover {
+  color: #dddbdb;
+}
