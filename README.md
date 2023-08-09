@@ -1,4 +1,4 @@
-[![Tests](https://github.com/yandex-praktikum/react-mesto-api-full-gha/actions/workflows/tests.yml/badge.svg)](https://github.com/yandex-praktikum/react-mesto-api-full-gha/actions/workflows/tests.yml)
+<!-- [![Tests](https://github.com/yandex-praktikum/react-mesto-api-full-gha/actions/workflows/tests.yml/badge.svg)](https://github.com/yandex-praktikum/react-mesto-api-full-gha/actions/workflows/tests.yml) -->
 # Проект Mesto на Реакте (frontend + backend, на домене)
 
 <a href="https://mestofront.anstpov.nomoredomains.monster" target="_blank">
