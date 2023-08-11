@@ -1,5 +1,6 @@
 <!-- [![Tests](https://github.com/yandex-praktikum/react-mesto-api-full-gha/actions/workflows/tests.yml/badge.svg)](https://github.com/yandex-praktikum/react-mesto-api-full-gha/actions/workflows/tests.yml) -->
-# Проект Mesto на Реакте (frontend + backend, на домене)
+# Проект Mesto на Реакте (frontend + backend)
+#### Статус: сделано :white_check_mark:
 
 <a href="https://mestofront.anstpov.nomoredomains.monster" target="_blank">
     <img src="https://github.com/AnastasiaPovarkova/react-mesto-api-full-gha/blob/main/frontend/src/images/screensaverr.png?raw=true" width="900" title="Mesto https" alt="Mesto https"/>
